@@ -65,8 +65,8 @@
             <h1>Parabéns, {{ $client->name }}!</h1>
         </div>
         <div class="content">
-            <p>Sua compra de <strong>R$ {{ number_format($purchaseValue, 2, ',', '.') }}</strong> foi registrada com sucesso! Agora você acumula <strong>{{intdiv($client->balance, 5)}}</strong> @if(intdiv($client->balance, 5) != 1) pontos @else ponto @endif em sua conta!</p>
-            <p>Muito obrigado por sua compra. Continue comprando para ganhar ainda mais pontos e aproveitar nossas recompensas exclusivas 😃</p>
+            <p>Você recebeu sua recompensa: <strong>{{$reward->name}}</strong>! Essa troca custou <strong>{{$reward->pointsCost}}</strong> @if($reward->pointsCost != 1) pontos, @else ponto, @endif restando um total de <strong>{{intdiv($client->balance, 5)}}</strong> @if(intdiv($client->balance, 5) != 1) pontos @else ponto @endif em sua conta.</p>
+            <p>Continue comprando para ganhar ainda mais pontos e aproveitar nossas recompensas exclusivas 😃</p>
             <a href="#" class="btn">Ver Recompensas</a>
         </div>
         <div class="footer">
