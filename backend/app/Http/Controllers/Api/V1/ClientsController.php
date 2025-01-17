@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use App\Http\Resources\V1\ClientAndRewardResource;
 use App\Http\Resources\V1\ClientResource;
 use App\Models\Client;
 use App\Traits\HttpResponses;
@@ -92,6 +93,12 @@ class ClientsController extends Controller
         
     }
 
-    
-}
+    public function getRewards($id): JsonResponse{
+        $client = Client::where('id', $id)->first();
 
+        if ($client)
+            return $this->success('Client found', 200, new ClientAndRewardResource($client));
+        else
+            return $this->error('Client not found', 404);
+    }
+}

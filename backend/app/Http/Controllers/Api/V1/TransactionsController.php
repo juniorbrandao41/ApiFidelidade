@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Exceptions\NotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTransactionRequest;
-use App\Http\Resources\V1\TransictionResource;
+use App\Http\Resources\V1\TransactionResource;
 use App\Services\TransactionService;
 use App\Traits\HttpResponses;
 use Illuminate\Http\JsonResponse;
@@ -39,7 +39,7 @@ class TransactionsController extends Controller
         try{
             $transaction = $this->transacationService->createTransaction($data);
 
-            return $this->success("Transaction registered successfully", 200, new TransictionResource($transaction->load('client')));
+            return $this->success("Transaction registered successfully", 200, new TransactionResource($transaction->load('client')));
         }catch (NotFoundException $e) { 
             return $e->render($request);
         }

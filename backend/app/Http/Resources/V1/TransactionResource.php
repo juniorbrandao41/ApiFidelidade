@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
 
-class TransictionResource extends JsonResource
+class TransactionResource extends JsonResource
 {
 
     public function toArray(Request $request): array
